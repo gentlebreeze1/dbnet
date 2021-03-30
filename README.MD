@@ -45,31 +45,12 @@ We have a quick demo to visualize detection result:
 
 The pretrained model can be download from manaai.cn.
 
+# TENSORRT
+## pth2onnx
+执行 python export.py既可以导出onnx，根据实际情况决定是否需要dynamic_axes
+## onnx2trt
+执行python conver_trt_quant.py既可以获取tensorrt的二进制文件
+## inference
+demo_trt和demo2_trt提供两种解码格式对应decode_v2和decode其中decode_v2更复杂更精确，decode相对简单
+动态输入的结果要比固定输入的结果更精确，目前本版本tensorrt不支持动态输入
 
-
-<h2 id="Performance">Performance</h2>
-
-### [ICDAR 2015](http://rrc.cvc.uab.es/?ch=4)
-only train on ICDAR2015 dataset
-
-| Method                   | image size (short size) |learning rate | Precision (%) | Recall (%) | F-measure (%) | FPS |
-|:--------------------------:|:-------:|:--------:|:--------:|:------------:|:---------------:|:-----:|
-| SynthText-Defrom-ResNet-18(paper)  | 736 |0.007 | 86.8 | 78.4 | 82.3 | 48 |
-| ImageNet-resnet18-FPN-DBHead  |736 |1e-3| 87.03 | 75.06 | 80.6 | 43 |
-| ImageNet-Defrom-Resnet18-FPN-DBHead  |736 |1e-3| 88.61 | 73.84 | 80.56 | 36 |
-| ImageNet-resnet50-FPN-DBHead  |736 |1e-3| 88.06 | 77.14 | 82.24 | 27 |
-| ImageNet-resnest50-FPN-DBHead  |736 |1e-3| 88.18 | 76.27 | 81.78 | 27 |
-
-### 
-
-## Reference
-
-1. https://arxiv.org/pdf/1911.08947.pdf
-2. https://github.com/WenmuZhou/PANet.pytorch
-3. https://github.com/MhLiao/DB
-
-
-
-## Copyright
-
-all rights belongs to WenmuZhou && MANAAI authors.
